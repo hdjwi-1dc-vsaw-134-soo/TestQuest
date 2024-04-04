@@ -1,9 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 import { getQuest } from "@workadventure/quests";
+import { levelUp } from "@workadventure/quests";
 
-const quest = await getQuest("01001_TEST_JULIA");
-
-console.log(quest);
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
@@ -12,9 +10,18 @@ console.log('Script started successfully');
 let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
-WA.onInit().then(() => {
+WA.onInit().then(async () => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
+
+    const quest = await getQuest("01001_TEST_JULIA");
+
+    WA.room.onEnterLayer("test_quest_1").subscribe( async () => {
+        WA.room.showLayer('test_quest_1');
+        await levelUp("01001_TEST_JULIA", 10);
+      });
+
+    console.log(quest);
 
     WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();
