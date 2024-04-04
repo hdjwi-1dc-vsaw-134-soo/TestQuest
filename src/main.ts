@@ -17,7 +17,7 @@ WA.onInit().then(async () => {
     const quest = await getQuest("01001_TEST_JULIA");
 
     WA.room.onEnterLayer("test_quest_1").subscribe( async () => {
-        WA.room.showLayer('test_quest_1');
+        WA.room.hideLayer('test_quest_1');
         await levelUp("01001_TEST_JULIA", 10);
       });
 
