@@ -1,4 +1,9 @@
 /// <reference types="@workadventure/iframe-api-typings" />
+import { getQuest } from "@workadventure/quests";
+
+const quest = await getQuest("01001_TEST_JULIA");
+
+console.log(quest);
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
