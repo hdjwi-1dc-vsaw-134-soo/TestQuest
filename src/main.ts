@@ -45,4 +45,20 @@ function closePopup(){
     }
 }
 
+WA.ui.actionBar.addButton({
+    id: 'privacy-btn',
+    type: 'action',
+    imageSrc: 'public/privacy.svg',
+    toolTip: "Privacy Policy",
+    callback: () => {
+        WA.ui.modal.openModal({
+            title: "Privacy policy",
+            src: "https://www.pastfoundation.org/privacy-policy",
+            allowApi: false,
+            allow: "microphone; camera",
+            position: "center",
+        }, () => WA.ui.modal.closeModal())
+    }
+});
+
 export {};
